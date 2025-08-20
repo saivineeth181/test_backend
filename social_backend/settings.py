@@ -142,6 +142,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://test-backend-tk1o.onrender.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
