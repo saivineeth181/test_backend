@@ -1,0 +1,24 @@
+# requirements-dev.txt (additional development dependencies)
+# Development dependencies
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+psycopg2-binary==2.9.9
+python-decouple==3.8
+requests==2.31.0
+cryptography==41.0.7
+
+# Development tools
+django-debug-toolbar==4.2.0
+pytest-django==4.7.0
+factory-boy==3.3.0
+coverage==7.3.2
+black==23.10.1
+flake8==6.1.0
+
+# Production enhancements
+gunicorn==21.2.0
+whitenoise==6.6.0
+sentry-sdk==1.38.0
+celery==5.3.4
+redis==5.0.1
