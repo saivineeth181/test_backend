@@ -145,6 +145,13 @@ CORS_ALLOWED_ORIGINS = [
     "https://testing-frontend-1let.onrender.com",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://testing-frontend-1let.onrender.com",
+]
+
+
 CORS_ALLOW_CREDENTIALS = True
 
 SESSION_COOKIE_SAMESITE = "None"   # <– must be "None" for cross-domain cookies

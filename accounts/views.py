@@ -136,6 +136,7 @@ def subscribe_webhooks(request):
         
         # Subscribe to webhooks
         result = FacebookAPI.subscribe_page_webhooks(page.page_id, page.page_access_token)
+        print(f"Webhook Subscription Result: {result}")  # Debugging line
         
         if result.get('success'):
             page.webhook_subscribed = True
