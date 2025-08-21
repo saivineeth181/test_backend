@@ -3,7 +3,7 @@ from django.conf import settings
 from typing import Dict, List, Optional
 
 class FacebookAPI:
-    BASE_URL = "https://graph.facebook.com/v18.0"
+    BASE_URL = "https://graph.facebook.com/v23.0"
     
     @staticmethod
     def exchange_code_for_token(code: str, redirect_uri: str) -> Dict:
@@ -43,6 +43,19 @@ class FacebookAPI:
         response = requests.get(url, params=params)
         data = response.json()
         return data.get('data', [])
+    
+    @staticmethod
+    def get_instagrame_name(instagram_id: str, page_access_token: str) -> Dict:
+        """Subscribe page to webhooks"""
+        url = f"{FacebookAPI.BASE_URL}/{instagram_id}"
+        print(url)
+        params = {
+            'access_token': page_access_token,
+            'fields': 'id,name'
+        }
+        
+        response = requests.get(url, params=params)
+        return response.json()
     
     @staticmethod
     def subscribe_page_webhooks(page_id: str, page_access_token: str) -> Dict:

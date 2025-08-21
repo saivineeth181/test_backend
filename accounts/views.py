@@ -25,6 +25,7 @@ def logout_view(request):
 def facebook_login(request):
     """Handle Facebook OAuth login"""
     access_token = request.data.get('access_token')
+    print(f"Access Token: {access_token}")  # Debugging line to check access token
     
     if not access_token:
         return Response({'error': 'Access token required'}, status=status.HTTP_400_BAD_REQUEST)
@@ -97,11 +98,13 @@ def get_user_pages(request):
             # Handle Instagram business account if available
             if 'instagram_business_account' in page_data:
                 ig_data = page_data['instagram_business_account']
+                instagram_name = FacebookAPI.get_instagrame_name(ig_data['id'], facebook_user.access_token) if ig_data['id'] else None
+                print(f"Instagram Name: {instagram_name}")  # Debugging line
                 ig_account, created = InstagramAccount.objects.get_or_create(
                     facebook_user=facebook_user,
                     instagram_id=ig_data['id'],
                     defaults={
-                        'username': ig_data.get('username', ''),
+                        'username': instagram_name.get('name', ''),
                         'access_token': page_data['access_token']
                     }
                 )

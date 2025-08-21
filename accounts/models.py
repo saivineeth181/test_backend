@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class FacebookUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     facebook_id = models.CharField(max_length=100, unique=True)
     access_token = models.TextField()
     token_expires_at = models.DateTimeField(null=True, blank=True)
