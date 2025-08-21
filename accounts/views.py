@@ -75,6 +75,7 @@ def facebook_login(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_user_pages(request):
+    print(request.session, request.META["CSRF_COOKIE"])
     """Get user's Facebook pages and Instagram accounts"""
     try:
         facebook_user = FacebookUser.objects.get(user=request.user)
