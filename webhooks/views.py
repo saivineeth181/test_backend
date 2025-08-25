@@ -36,6 +36,7 @@ def facebook_webhook(request):
         # Process webhook event
         try:
             data = json.loads(request.body)
+            print(data)
             process_webhook_event(data)
             return HttpResponse('OK')
         except Exception as e:
